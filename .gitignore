@@ -4,3 +4,6 @@ dist
 .env
 log
 riot4-parcel-demo.code-workspace
+dist-build
+dist-build666
+tags/index.js
