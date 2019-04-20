@@ -1,9 +1,8 @@
 // npm
-import { component } from "riot"
+import { register, mount } from "riot"
 
 // self
 import RiotApp from "./tags/app.riot"
 
-component(RiotApp)(document.querySelector("main"), {
-  message: "Hello there",
-})
+register("riot-app", RiotApp)
+mount("riot-app", { message: "Hello there" })
