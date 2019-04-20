@@ -1,0 +1,15 @@
+<tag-two>
+  <h2 onclick="{click}" class="title is-3">Tag two</h2>
+  <tag-three el="{state.cnt}" />
+
+  <script>
+    export default {
+      click(ev) {
+        this.update({ cnt: this.state.cnt + 1 })
+      },
+      state: {
+        cnt: 0,
+      },
+    }
+  </script>
+</tag-two>
