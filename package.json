@@ -47,7 +47,7 @@
     "arrowParens": "always",
     "overrides": [
       {
-        "files": "tags/*.tag",
+        "files": "tags/*.riot",
         "options": {
           "parser": "html"
         }
