@@ -1,8 +1,18 @@
 <tag-three>
   <h3 class="title is-5">
-    Tag three <span class="{props.flash}">({props.el})</span>{" "}
-    <button onclick="{props.click}" class="button is-danger is-small">
+    Tag three
+    <button
+      disabled="{!props.click}"
+      onclick="{props.click}"
+      class="button is-danger is-small"
+    >
       -1
     </button>
   </h3>
+  <p>
+    Count:
+    <b style="{props.flash}"
+      >{props.el} {props.el === 1 ? 'click' : 'clicks'}</b
+    >
+  </p>
 </tag-three>
