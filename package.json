@@ -58,7 +58,7 @@
   "purgecss": {
     "content": [
       "*.html",
-      "tags/*.tag"
+      "tags/*.riot"
     ]
   },
   "sass": {
