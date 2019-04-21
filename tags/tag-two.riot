@@ -1,14 +1,59 @@
 <tag-two>
-  <h2 onclick="{click}" class="title is-3">Tag two</h2>
-  <tag-three el="{state.cnt}" />
+  <h2 class="title is-3">
+    Tag two
+    <button onclick="{click}" class="button is-primary is-small">+1</button>
+  </h2>
+
+  <tag-three flash="{state.flash}" el="{state.cnt}" click="{click2}" />
 
   <script>
     export default {
-      click(ev) {
-        this.update({ cnt: this.state.cnt + 1 })
+      click() {
+        /*
+        this.state.flash = 'has-background-primary'
+        this.state.cnt = this.state.cnt + 1
+        if (!this.state.timer) {
+          this.state.timer = setTimeout(() => {
+            this.update({ flash: '', timer: false })
+          }, 300)
+        }
+        */
+
+        this.update({
+          flash: "has-background-primary",
+          cnt: this.state.cnt + 1,
+          timer:
+            !this.state.timer &&
+            setTimeout(() => {
+              this.update({ flash: "", timer: false })
+            }, 300),
+        })
       },
+      click2() {
+        this.update({
+          flash: "has-background-danger",
+          cnt: this.state.cnt - 1,
+          timer:
+            !this.state.timer &&
+            setTimeout(() => {
+              this.update({ flash: "", timer: false })
+            }, 300),
+        })
+      },
+      onBeforeUpdate(props, state) {
+        console.log("onBeforeUpdate", props, state)
+      },
+      onBeforeUnmount(props, state) {
+        if (state.timer) {
+          clearTimeout(state.timer)
+          state.timer = false
+        }
+      },
+
       state: {
         cnt: 0,
+        flash: "",
+        timer: false,
       },
     }
   </script>
