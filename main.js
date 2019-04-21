@@ -1,17 +1,11 @@
-// npm
-import { component, register } from "riot"
-// import { component } from "riot"
-
 // self
+import { registerAuto, setup } from "./utils.js"
 import RiotApp from "./tags/app.riot"
 import TagTwo from "./tags/tag-two.riot"
 import TagThree from "./tags/tag-three.riot"
-// import { RiotApp, registerAll } from "./tags"
-// registerAll()
+import Tags from "./tags/tags.riot"
 
-register("tag-two", TagTwo)
-register("tag-three", TagThree)
-
-component(RiotApp)(document.querySelector("main"), {
-  message: "Hello there",
-})
+registerAuto(TagTwo)
+registerAuto(Tags)
+const tags = registerAuto(TagThree)
+setup(RiotApp, { tags, message: "Hello there" })
