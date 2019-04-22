@@ -28,7 +28,7 @@ riot.register(TagThree.name, TagThree)
 
 const TagTwo = require("./tags/tag-two.riot").default
 const tt7 = Date.now()
-console.log("require TagTwo", tt7 - tt6)
+console.log("require TagTwo", tt7 - tt6, TagTwo.css)
 
 const htmlTwo = render("tag-two", TagTwo)
 const tt8 = Date.now()
