@@ -1,35 +1,21 @@
-const riot = require("riot")
+// core
+const { readFileSync } = require("fs")
 
-const tt0 = Date.now()
+// npm
 require("@riotjs/ssr/register")()
-const tt1 = Date.now()
-console.log("register", tt1 - tt0)
+const riot = require("riot")
 const render = require("@riotjs/ssr")
-const tt2 = Date.now()
-console.log("require render", tt2 - tt1)
 
+// self
 const TagThree = require("./tags/tag-three.riot").default
-const tt3 = Date.now()
-console.log("require TagThree", tt3 - tt2)
-
-const html = render("tag-three", TagThree, { el: 42, flash: "" })
-const tt4 = Date.now()
-console.log("render", tt4 - tt3, html)
-
-const html2 = render("tag-three", TagThree, { el: 44, flash: "" })
-const tt5 = Date.now()
-console.log("render", tt5 - tt4)
-
-const html3 = render("tag-three", TagThree, { el: 47, flash: "" })
-const tt6 = Date.now()
-console.log("render", tt6 - tt5)
-
-riot.register(TagThree.name, TagThree)
-
 const TagTwo = require("./tags/tag-two.riot").default
-const tt7 = Date.now()
-console.log("require TagTwo", tt7 - tt6, TagTwo.css)
+const Tags = require("./tags/tags.riot").default
+const RiotApp = require("./tags/app.riot").default
 
-const htmlTwo = render("tag-two", TagTwo)
-const tt8 = Date.now()
-console.log("render", tt8 - tt7, htmlTwo)
+riot.register(TagTwo.name, TagTwo)
+riot.register(TagThree.name, TagThree)
+const tags = riot.register(Tags.name, Tags)
+const htmlApp = render("riot-app", RiotApp, { tags, message: "Hello there" })
+const fc = readFileSync("index.html", "utf8")
+const out = fc.replace("<riot-app></riot-app>", htmlApp)
+console.log(out)
