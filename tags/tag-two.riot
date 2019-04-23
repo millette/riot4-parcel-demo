@@ -10,32 +10,20 @@
     </button>
   </h2>
 
-  <div class="field is-grouped">
-    <div class="control">
-      <label class="checkbox">
-        <input onchange="{enabled}" type="checkbox" />
-        Enable max
-      </label>
-    </div>
-    <div class="control">
-      <input
-        checked="{state.withmax}"
-        onchange="{change}"
-        class="input"
-        type="number"
-        min="0"
-        value="{state.max}"
-        placeholder="Set max"
-      />
-    </div>
-  </div>
-
   <tag-three
     class="box"
     flash="{state.flash}"
     el="{state.cnt}"
     click="{state.cnt && clickDown}"
   />
+
+  <max-tag
+    enabled="{enabled}"
+    checked="{state.withmax}"
+    onchange="{change}"
+    value="{state.max}"
+  />
+
   <script>
     const newCount = (t, n) => {
       const cnt = Math.max(0, t.state.cnt + n)

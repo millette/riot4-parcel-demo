@@ -1,16 +1,19 @@
 <riot-app>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">Oh yes riot v4</h1>
-      <tag-two />
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Oh yes riot v4</h1>
+        <h2 class="subtitle">Some text</h2>
+        <div class="content">
+          <p>{props.message}</p>
+        </div>
+      </div>
     </div>
   </section>
+
   <section class="section">
     <div class="container">
-      <h2 class="title is-3">Some text</h2>
-      <div class="content">
-        <p>{props.message}</p>
-      </div>
+      <tag-two />
     </div>
   </section>
 
