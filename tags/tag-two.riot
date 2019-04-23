@@ -4,13 +4,15 @@
     <button
       disabled="{!canUp()}"
       onclick="{canUp() && clickUp}"
-      class="button is-primary is-large"
+      class="button is-primary"
     >
       +1
     </button>
   </h2>
 
   <tag-three
+    canup="{canUp()}"
+    clickup="{clickUp}"
     class="box"
     flash="{state.flash}"
     el="{state.cnt}"

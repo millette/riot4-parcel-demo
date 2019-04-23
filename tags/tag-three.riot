@@ -2,6 +2,17 @@
   <nav class="level is-mobile">
     <div class="level-item has-text-centered">
       <div>
+        <button
+          disabled="{!props.canup}"
+          onclick="{props.canup && props.clickup}"
+          class="title button is-primary is-large"
+        >
+          +1
+        </button>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
         <p class="heading">Count</p>
         <p class="title" style="padding: 0.15rem 0.5rem;{props.flash}">
           {props.el} {props.el === 1 ? 'click' : 'clicks'}
@@ -10,16 +21,13 @@
     </div>
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading">Tag three</p>
-        <p class="title">
-          <button
-            disabled="{!props.click}"
-            onclick="{props.click}"
-            class="button is-danger is-large"
-          >
-            -1
-          </button>
-        </p>
+        <button
+          disabled="{!props.click}"
+          onclick="{props.click}"
+          class="title button is-danger is-large"
+        >
+          -1
+        </button>
       </div>
     </div>
   </nav>
