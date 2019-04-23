@@ -1,0 +1,21 @@
+<max-tag>
+  <div class="field is-grouped">
+    <div class="control">
+      <label class="checkbox">
+        <input onchange="{props.enabled}" type="checkbox" />
+        Enable max
+      </label>
+    </div>
+    <div class="control">
+      <input
+        checked="{props.withmax}"
+        onchange="{props.onchange}"
+        class="input"
+        type="number"
+        min="0"
+        value="{props.max}"
+        placeholder="Set max"
+      />
+    </div>
+  </div>
+</max-tag>
