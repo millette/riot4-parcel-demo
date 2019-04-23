@@ -1,8 +1,35 @@
 <tag-two>
   <h2 class="title is-3">
     Tag two
-    <button onclick="{clickUp}" class="button is-primary is-large">+1</button>
+    <button
+      disabled="{!canUp()}"
+      onclick="{canUp() && clickUp}"
+      class="button is-primary is-large"
+    >
+      +1
+    </button>
   </h2>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <label class="checkbox">
+        <input onchange="{enabled}" type="checkbox" />
+        Enable max
+      </label>
+    </div>
+    <div class="control">
+      <input
+        checked="{state.withmax}"
+        onchange="{change}"
+        class="input"
+        type="number"
+        min="0"
+        value="{state.max}"
+        placeholder="Set max"
+      />
+    </div>
+  </div>
+
   <tag-three
     class="box"
     flash="{state.flash}"
@@ -10,16 +37,36 @@
     click="{state.cnt && clickDown}"
   />
   <script>
+    const newCount = (t, n) => {
+      const cnt = Math.max(0, t.state.cnt + n)
+      return t.state.withmax && t.state.max ? Math.min(t.state.max, cnt) : cnt
+    }
     const clicker = (t, n) =>
       t.update({
-        flash: "background: yellow;",
-        cnt: Math.max(0, t.state.cnt + n),
-        timer: setTimeout(() => {
-          t.update({ flash: "", timer: false })
-        }, t.props.ms || 400),
+        flash: n ? "background: yellow;" : "",
+        cnt: newCount(t, n),
+        timer:
+          n &&
+          setTimeout(() => {
+            t.update({ flash: "", timer: false })
+          }, t.props.ms || 400),
       })
 
     export default {
+      canUp() {
+        return (
+          !this.state.withmax ||
+          !this.state.max ||
+          (this.state.max && this.state.max > this.state.cnt)
+        )
+      },
+      enabled(ev) {
+        this.update({ withmax: ev.target.checked })
+      },
+      change(ev) {
+        const max = parseInt(ev.target.value, 10)
+        this.update({ max })
+      },
       clickUp() {
         clicker(this, 1)
       },
@@ -32,13 +79,7 @@
       state: {
         cnt: 0,
         flash: "",
-        timer: false,
       },
     }
   </script>
-  <style>
-    .justanexample {
-      margin: 666px;
-    }
-  </style>
 </tag-two>
