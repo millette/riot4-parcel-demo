@@ -25,12 +25,12 @@
   "devDependencies": {
     "@riotjs/parcel-plugin-riot": "^4.0.0",
     "@riotjs/ssr": "^4.0.0-beta.1",
-    "gh-pages": "^2.0.1",
-    "husky": "^2.1.0",
-    "lint-staged": "^8.1.5",
+    "gh-pages": "^2.1.1",
+    "husky": "^2.7.0",
+    "lint-staged": "^9.5.0",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-purgecss": "^2.1.2",
-    "prettier": "^1.17.0"
+    "prettier": "^1.19.1"
   },
   "lint-staged": {
     "*.{js,json,md,html,graphql,riot,scss}": [
